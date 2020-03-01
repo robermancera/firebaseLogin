@@ -1,139 +1,57 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <style>
-        body {
-            font-family: "Lato", sans-serif;
-        }
-
-        .main-head {
-            height: 150px;
-            background: #FFF;
-        }
-
-        .sidenav {
-            height: 100%;
-            background-color: #000;
-            overflow-x: hidden;
-            padding-top: 20px;
-        }
-
-
-        .main {
-            padding: 0px 10px;
-        }
-
-        @media screen and (max-height: 450px) {
-            .sidenav {
-                padding-top: 15px;
-            }
-        }
-
-        @media screen and (max-width: 450px) {
-            .login-form {
-                margin-top: 10%;
-            }
-
-            .register-form {
-                margin-top: 10%;
-            }
-        }
-
-        @media screen and (min-width: 768px) {
-            .main {
-                margin-left: 40%;
-            }
-
-            .sidenav {
-                width: 40%;
-                position: fixed;
-                z-index: 1;
-                top: 0;
-                left: 0;
-            }
-
-            .login-form {
-                margin-top: 80%;
-            }
-
-            .register-form {
-                margin-top: 20%;
-            }
-        }
-
-
-        .login-main-text {
-            margin-top: 20%;
-            padding: 60px;
-            color: #fff;
-        }
-
-        .login-main-text h2 {
-            font-weight: 300;
-        }
-
-        .btn-black {
-            background-color: #000 !important;
-            color: #fff;
-        }
-    </style>
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/7.9.1/firebase-app.js"></script>
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="/__/firebase/7.9.1/firebase-analytics.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/7.9.1/firebase-auth.js"></script>
-    <script defer src="/__/firebase/7.9.1/firebase-database.js"></script>
-    <script defer src="/__/firebase/7.9.1/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/7.9.1/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Autenticación con Firebase</title>
 </head>
-
 <body>
-    <div class="sidenav">
-        <div class="login-main-text">
-            <h2>Application<br> Login Page</h2>
-            <p>Login or register from here to access.</p>
-        </div>
-    </div>
-    <div class="main">
-        <div class="col-md-6 col-sm-12">
-            <div class="login-form">
-                <form>
-                    <div class="form-group">
-                        <label>User Name</label>
-                        <input type="text" class="form-control" placeholder="User Name">
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" placeholder="Password">
-                    </div>
-                    <input type="radio" name="isLoginOrSignUp" id="isLogin" class="logueo">Login
-                    <input type="radio" name="isLoginOrSignUp" id="isSignUp" class="registrar">Register
-                    <button type="submit" class="btn btn-black">Push Me</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</body>
-<script src="./app.js"></script>
+  <main role="application">
 
+    <section class="appInfo">
+      <article class="privateInfo">
+        <h2 class="privateInfo-title">Información Privada y delicada 🤐</h2>
+        
+        <div id="loginFormUI" class="form-container">
+          <p>Por favor, inicia sesión para mostrar tu información 🖖...</p>
+
+          <form class="loginForm" name="loginForm">
+            <input
+              class="input"
+              type="email"
+              name="email"
+              placeholder="Correo Electronico"
+              required
+            />
+            <input
+              class="input"
+              type="password"
+              name="password"
+              placeholder="Contraseña"
+              required
+            />
+
+            <div class="form-radioContainer">
+              <input type="radio" name="isLoginOrSignup" id="radioIsLogin" value="isLogin" checked />
+              <label for="radioIsLogin">Login</label>
+
+              <input type="radio" name="isLoginOrSignup" id="radioIsSignup" value="isSignup" />
+              <label for="radioIsSignup">SignUp</label>
+            </div>
+
+            <button id="btnLogin" class="button">Iniciar sesión</button>
+          </form>
+        </div>
+
+        <div id="hiddenPrivateInfo">
+          <p class="loading">Cargando...</p>
+        </div>
+      </article>
+    </section>
+  </main>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="./app.js"></script>
+</body>
 </html>
